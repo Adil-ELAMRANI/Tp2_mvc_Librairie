@@ -1,0 +1,97 @@
+/* Style général du corps de la page */
+body {
+  font-family: Arial, sans-serif; /* Police de caractère */
+  margin: 0; /* Aucune marge extérieure */
+  padding: 0; /* Aucun padding intérieur */
+  background-image: url("/public/img/Livres.jpg"); /* Image de fond */
+  background-size: cover; /* L'image de fond couvre tout l'espace disponible */
+  background-position: center; /* Centrage de l'image de fond */
+  background-attachment: fixed; /* L'image de fond est fixe lors du défilement */
+  display: flex; /* Utilisation de Flexbox pour le corps */
+  flex-direction: column; /* Organisation des éléments en colonne */
+  height: 100vh; /* Hauteur totale de la vue */
+  align-items: center; /* Centrage horizontal des éléments */
+}
+
+/* Style de la barre de navigation */
+nav {
+  background-color: rgba(0, 30, 20, 1); /* Couleur de fond semi-transparente */
+  width: 100%; /* Pleine largeur */
+  display: flex; /* Utilisation de Flexbox pour la navigation */
+  justify-content: center; /* Centrage des éléments de navigation */
+  padding: 14px 0; /* Ajustement du padding */
+}
+
+/* Style des liens de la barre de navigation */
+nav a {
+  color: white; /* Couleur du texte */
+  text-align: center; /* Centrage du texte */
+  padding: 14px 16px; /* Espacement intérieur */
+  text-decoration-thickness: bold; /* Aucun soulignement */
+  font-size: 20px; /* Taille du texte */
+  margin: 0 10px; /* Espacement entre les liens */
+}
+
+/* Effet au survol des liens */
+nav a:hover {
+  background-color: #ddd; /* Couleur de fond au survol */
+  color: black; /* Couleur du texte au survol */
+  border-radius: 5px; /* Rayon des bords arrondis au survol */
+}
+
+/* Style du contenu principal */
+main {
+  padding: 20px; /* Espacement intérieur */
+  background-color: rgba(143, 219, 173, 0.8); /* Fond semi-transparent */
+  margin: 20px; /* Marge extérieure */
+  border-radius: 8px; /* Bords arrondis */
+  width: 90%; /* Largeur réglable selon préférence */
+  max-width: 960px; /* Largeur maximale pour un meilleur contrôle */
+}
+
+/* Base du style du tableau */
+table {
+  width: 100%; /* Largeur complète */
+  border-collapse: collapse; /* Les bordures des cellules se fusionnent */
+  margin-top: 20px; /* Marge supérieure */
+}
+
+/* Style des cellules et en-têtes du tableau */
+table,
+th,
+td {
+  border: 1px solid #ddd; /* Bordure */
+}
+
+/* Style des en-têtes du tableau */
+th,
+td {
+  text-align: left; /* Alignement du texte à gauche */
+  padding: 8px; /* Espacement intérieur */
+}
+
+/* Style spécifique pour les en-têtes */
+th {
+  background-color: #f2f2f2; /* Couleur de fond */
+}
+
+/* Style pour les lignes paires du tableau */
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Couleur de fond */
+}
+
+/* Style des boutons */
+input[type="submit"] {
+  background-color: #4caf50; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  border: none; /* Aucune bordure */
+  border-radius: 4px; /* Bords arrondis */
+  cursor: pointer; /* Curseur en forme de pointeur */
+  padding: 10px 20px; /* Espacement intérieur */
+  margin-top: 5px; /* Marge supérieure */
+}
+
+/* Effet au survol des boutons */
+input[type="submit"]:hover {
+  background-color: #45a049; /* Couleur de fond au survol */
+}

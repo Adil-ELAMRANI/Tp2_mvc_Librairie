@@ -1,0 +1,46 @@
+<!-- home-index.php -->
+<!-- Affichage de la liste des locations en cours -->
+{{ include('layouts/header.php', {title:'home-index'})}}
+<div>
+    <h1>Liste des locations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Livre</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for location in locations %}
+            <tr>
+                <td>
+                    {% for client in clients %}
+                    {% if location.client_id == client.id %}
+                    {{ client.prenom }} {{ client.nom }}
+                    {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for livre in livres %}
+                    {% if location.livre_id == livre.id %}
+                    {{ livre.titre }}
+                    {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ location.date_debut }}</td>
+                <td>{{ location.date_fin }}</td>
+                <td>
+                    <form action="{{ path }}location/delete" method="post">
+                        <input type="hidden" name="id" value="{{ location.id }}">
+                        <input type="submit" value="Supprimer">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{{ include('layouts/footer.php')}}
