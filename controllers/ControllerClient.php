@@ -8,7 +8,7 @@ use App\Models\Ville;
 use App\Providers\View;
 use App\Providers\Validator;
 
-class ClientController {
+class controllerClient {
     
     public function index() {
         $client = new Client();

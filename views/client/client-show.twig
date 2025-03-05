@@ -1,7 +1,7 @@
-<!-- client-show.php -->
+<!-- client-show.twig -->
 <!-- Affichage des détails d'un client -->
 
-{{ include('layouts/header.php', {title:'client-showt'})}}
+{{ include('layouts/header.twig', {title:'client-showt'})}}
     <div class="container">
     <h1>Détails du client</h1>
         <p><strong>Prénom : </strong>{{ client.prenom }}</p>
@@ -18,4 +18,4 @@
         </p>
         <p><a href="{{ path }}client/edit/{{ client.id }}">Modifier</a></p>
     </div>
-{{ include('layouts/footer.php')}}
+{{ include('layouts/footer.twig')}}

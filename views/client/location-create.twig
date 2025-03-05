@@ -1,7 +1,7 @@
-<!-- location-create.php -->
+<!-- location-create.twig -->
 <!-- Formulaire pour créer une nouvelle location -->
 
-{{ include('layouts/header.php', {title:'location-create'})}}
+{{ include('layouts/header.twig', {title:'location-create'})}}
 <div>
     <h2>Créer une nouvelle location</h2>
     <form action="{{ path }}location/store" method="post">
@@ -31,4 +31,4 @@
         <input type="submit" value="Enregistrer" class="submit">
     </form>
 </div>
-{{ include('layouts/footer.php')}}
+{{ include('layouts/footer.twig')}}
