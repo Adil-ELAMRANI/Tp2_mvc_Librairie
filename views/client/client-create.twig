@@ -1,0 +1,33 @@
+{# client/create.twig #}
+{# Formulaire de création d'un client #}
+
+{{ include('layouts/header.twig', {title:'Créer un client'}) }}
+
+<h1>Créer un client</h1>
+<form action="{{ path }}client/create" method="post">
+    <label>Nom 
+        <input type="text" name="nom">
+    </label>
+    <label>Prénom 
+        <input type="text" name="prenom">
+    </label>
+    <label>Adresse
+        <input type="text" name="adresse">
+    </label>
+    <label>Code Postal
+        <input type="text" name="code_postal">
+    </label>
+    <label>Téléphone
+        <input type="text" name="phone">
+    </label>
+    <label>Ville
+        <select name="ville_id">
+        {% for ville in villes %}
+            <option value="{{ ville.id }}" id="{{ ville.id }}">{{ ville.nom }}</option>
+        {% endfor %}
+        </select>
+    </label>
+    <input type="submit" value="Save" class="submit">
+</form>
+
+{{ include('layouts/footer.twig') }}

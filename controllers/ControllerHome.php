@@ -4,8 +4,8 @@ use App\Providers\View;
 
 class ControllerHome {
     public function index() {
-       echo "Bienvenue sur la page d'accueil";
-       View::render('home', ['title' => 'Bienvenue sur la page d\'accueil']);
+       echo "Bienvenue sur la page de notre Librairie";
+       View::render('client/home-index', ['title' => 'Bienvenue sur la page de notre Librairie']);
     }
 }
 

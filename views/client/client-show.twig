@@ -1,11 +1,11 @@
 <!-- client-show.twig -->
 <!-- Affichage des détails d'un client -->
 
-{{ include('layouts/header.twig', {title:'client-showt'})}}
+{{ include('layouts/header.twig', {title:'Clients'})}}
     <div class="container">
     <h1>Détails du client</h1>
-        <p><strong>Prénom : </strong>{{ client.prenom }}</p>
         <p><strong>Nom : </strong>{{ client.nom }}</p>
+        <p><strong>Prénom : </strong>{{ client.prenom }}</p>
         <p><strong>Adresse : </strong>{{ client.adresse }}</p>
         <p><strong>Code Postal : </strong>{{ client.code_postal }}</p>
         <p><strong>Phone : </strong>{{ client.phone }}</p>
@@ -19,3 +19,4 @@
         <p><a href="{{ path }}client/edit/{{ client.id }}">Modifier</a></p>
     </div>
 {{ include('layouts/footer.twig')}}
+

@@ -8,7 +8,7 @@ use App\Models\Ville;
 use App\Providers\View;
 use App\Providers\Validator;
 
-class controllerClient {
+class ControllerClient {
     
     public function index() {
         $client = new Client();
@@ -17,7 +17,7 @@ class controllerClient {
         $selectClient = $client->select();
         $selectVille = $ville->select();
 
-    return View::render("client/index", ['clients' => $selectClient, 'villes' => $selectVille]);
+    return View::render("client/client-index", ['clients' => $selectClient, 'villes' => $selectVille]);
     }
 
     public function create() {
@@ -28,17 +28,18 @@ class controllerClient {
 
     public function store($data=[]) {
         $validator = new Validator();
-        $validator->field('name', $data['name'])->min(3)->max(25);
-        $validator->field('address', $data['address'])->max(45);
+        $validator->field('nom', $data['nom'])->min(3)->max(25);
+        $validator->field('prenom', $data['prenom'])->min(3)->max(25);
+        $validator->field('adresse', $data['adresse'])->max(45);
         $validator->field('phone', $data['phone'])->max(20);
         $validator->field('code_postal', $data['code_postal'], "Code postal")->number()->max(10);
-        $validator->field('email', $data['email'])->required()->max(45)->email();
+        
 
         if ($validator->isSuccess()) {
             $client = new Client();
             $insert = $client->insert($data);
             if ($insert) {
-                return View::redirect('client/show?id=' . $insert);
+                return View::redirect('client/client-show?id=' . $insert);
             } else {
                 return View::render('error');
             }
@@ -84,11 +85,12 @@ class controllerClient {
 
     public function update($data=[], $get=[]) {
         $validator = new Validator();
-        $validator->field('name', $data['name'])->min(3)->max(25);
+        $validator->field('nom', $data['nom'])->min(3)->max(25);
+        $validator->field('prenom', $data['prenom'])->min(3)->max(25);
         $validator->field('address', $data['address'])->max(45);
         $validator->field('phone', $data['phone'])->max(20);
         $validator->field('code_postal', $data['code_postal'], "Code postal")->number()->max(10);
-        $validator->field('email', $data['email'])->required()->max(45)->email();
+        
 
         if ($validator->isSuccess()) {
             $client = new Client();

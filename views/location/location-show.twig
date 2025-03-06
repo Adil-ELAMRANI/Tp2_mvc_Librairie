@@ -1,0 +1,28 @@
+{# location/show.twig #}
+{# Affichage d'une location spécifique #}
+
+{{ include('layouts/header.twig', {title:'Location'}) }}
+
+<div>
+    <h1>Location</h1>
+    <table>
+        <tr>
+            <th>Client</th>
+            <td>{{ location.client_name }}</td>
+        </tr>
+        <tr>
+            <th>Livre</th>
+            <td>{{ location.livre_title }}</td>
+        </tr>
+        <tr>
+            <th>Date d'emprunt</th>
+            <td>{{ location.date_debut }}</td>
+        </tr>
+        <tr>
+            <th>Date de retour</th>
+            <td>{{ location.date_fin }}</td>
+        </tr>
+    </table>
+</div>
+
+{{ include('layouts/footer.twig') }}

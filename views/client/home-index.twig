@@ -1,7 +1,7 @@
 <!-- home-index.twig -->
 <!-- Affichage de la liste des locations en cours -->
 
-{{ include('layouts/header.twig', {title:'home-index'})}}
+{{ include('layouts/header.twig', {title:'Location'})}}
 <div>
     <h1>Liste des locations</h1>
     <table>
@@ -34,7 +34,7 @@
                 <td>{{ location.date_debut }}</td>
                 <td>{{ location.date_fin }}</td>
                 <td>
-                    <form action="{{ path }}location/delete" method="post">
+                    <form action="{{ base }}location/delete" method="post">
                         <input type="hidden" name="id" value="{{ location.id }}">
                         <input type="submit" value="Supprimer">
                     </form>

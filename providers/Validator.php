@@ -6,50 +6,43 @@ class Validator{
     private $errors = array();
     private $key;
     private $value;
-    private $name;
+    private $nom;
 
-    public function field($key, $value, $name = null){
+    public function field($key, $value, $nom = null){
         $this->key = $key;
         $this->value = $value;
-        if($name == null){
-            $this->name = ucfirst($key);
+        if($nom == null){
+            $this->nom = ucfirst($key);
         }else{
-            $this->name = ucfirst($name);
+            $this->nom = ucfirst($nom);
         }
         return $this;
     }
 
     public function required(){
         if(empty($this->value)){
-            $this->errors[$this->key]="$this->name is required!";
+            $this->errors[$this->key]="$this->nom is required!";
         }
         return $this;
     }
 
     public function max($length){
         if(strlen($this->value) > $length ){
-            $this->errors[$this->key]="$this->name must be less than $length characters!";
+            $this->errors[$this->key]="$this->nom must be less than $length characters!";
         }
         return $this;
     }
 
     public function min($length){
         if(strlen($this->value) < $length ){
-            $this->errors[$this->key]="$this->name must be more than $length characters!";
+            $this->errors[$this->key]="$this->nom must be more than $length characters!";
         }
         return $this;
     }
 
     public function number(){
         if(!empty($this->value) && !is_numeric($this->value)){
-            $this->errors[$this->key]="$this->name must be a number!";
-        }
-        return $this;	    
-    }
-
-    public function email(){
-        if(!empty($this->value) && !filter_var($this->value, FILTER_VALIDATE_EMAIL)){  
-            $this->errors[$this->key]="$this->name invalid!";
+            $this->errors[$this->key]="$this->nom must be a number!";
         }
         return $this;	    
     }

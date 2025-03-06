@@ -1,0 +1,34 @@
+{# location/create.twig #}
+{# Formulaire d'ajout d'une nouvelle location #}
+
+{{ include('layouts/header.twig', {title:'Nouvelle location'}) }}
+
+<h2>Saisir une location</h2>
+<form action="{{ path }}location/store" method="post">
+    <label>Client
+        <select name="client_id">
+        {% for client in clients %}
+            <option value="{{ client.id }}" name="{{ client.id }}">{{ client.prenom }} {{ client.nom }}</option>
+        {% endfor %}
+        </select>
+    </label>
+    <br>
+    <label>Livre
+        <select name="livre_id">
+        {% for livre in livres %}
+            <option value="{{ livre.id }}" name="{{ livre.id }}">{{ livre.titre }}</option>
+        {% endfor %}
+        </select>
+    </label>
+    <br>
+    <label>Durée de location
+        <select name="datefin">
+            <option value="{{ datefin7 }}" name="datefin">1 semaine</option>
+            <option value="{{ datefin14 }}" name="datefin">2 semaines</option>
+        </select>
+    </label>
+    <input type="hidden" name="datedebut" value="{{ datedebut }}">
+    <input type="submit" value="Enregistrer" class="submit">
+</form>
+
+{{ include('layouts/footer.twig') }}

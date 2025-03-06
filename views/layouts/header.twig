@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des clients</title>
-    <link rel="stylesheet" href="{{ path }}css/style.css">
+    <link rel="stylesheet" href="{{ asset }}css/style.css">
+    <link rel="stylesheet" href="{{ asset }}css/home.css">
 </head>
 <body>
     <nav>
-        <a href="{{ base }}">Accueil</a>
-        <a href="{{ base }}clients">Clients</a>
-        <a href="{{ base }}livres">Livres</a>
-        <a href="{{ base }}locations">Nouvelle Location</a>
-        <a href="{{ base }}client/create">Nouveau Client</a>
-        <a href="{{ base }}locations/create">Nouvelle Location</a>        
+        <a href="{{ base }}home/index">Locations</a>
+        <a href="{{ base }}client/index">Clients</a>
+        <a href="{{ base }}livre/index">Livres</a>
+        <a href="{{ base }}location/create">Nouvelle Location</a>  
+        <a href="{{ base }}client/create">Nouveau Client</a>      
     </nav>
     <main>

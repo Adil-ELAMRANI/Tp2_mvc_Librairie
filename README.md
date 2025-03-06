@@ -28,3 +28,7 @@ Ce projet a pour objectif de migrer une application web vers l'architecture **MV
 1. **Clonez ce dépôt** :
    ```bash
    git clone https://github.com/Adil-ELAMRANI/Tp2Librairie.git
+
+## 🔗 Liens utiles :
+
+### 📂 Dépôt GitHub : Tp2_mvc_Librairie

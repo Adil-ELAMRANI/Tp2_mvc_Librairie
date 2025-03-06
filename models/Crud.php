@@ -14,7 +14,7 @@ abstract class Crud extends PDO {
 
     final public function __construct() {
         try {
-            parent::__construct('mysql:host=localhost;dbname=ecommerce;port=3306;charset=utf8', 'root', '', [
+            parent::__construct('mysql:host=localhost; dbname=librairie; port=3306; charset=utf8', 'root', '', [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]);

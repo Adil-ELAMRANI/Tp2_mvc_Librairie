@@ -1,0 +1,36 @@
+{# client/edit.twig #}
+{# Formulaire de modification d'un client #}
+
+{{ include('layouts/header.twig', {title:'Modifier le client'}) }}
+
+<h1>Modifier</h1>
+<form action="{{ path }}client/update" method="post">
+    <input type="hidden" name="id" value="{{ client.id }}">
+    <label>Prénom 
+        <input type="text" name="prenom" value="{{ client.prenom }}">
+    </label>
+    <label>Nom 
+        <input type="text" name="nom" value="{{ client.nom }}">
+    </label>
+    <label>Adresse
+        <input type="text" name="adresse" value="{{ client.adresse }}">
+    </label>
+    <label>Code Postal
+        <input type="text" name="code_postal" value="{{ client.code_postal }}">
+    </label>
+    <label>Ville
+        <select name="ville_id">
+            {% for ville in villes %}
+                <option value="{{ ville.id }}" id="{{ ville.id }}" {% if client.ville_id == ville.id %} selected {% endif %}>{{ ville.nom }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <input type="submit" value="Modifier" class="submit">
+</form>
+
+<form action="{{ path }}client/delete" method="post">
+    <input type="hidden" name="id" value="{{ client.id }}">
+    <input type="submit" value="Effacer" class="submit">
+</form>
+
+{{ include('layouts/footer.twig') }}

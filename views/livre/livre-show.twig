@@ -1,0 +1,24 @@
+{# livre/livre-show.twig #}
+{# Affichage d'un livre spécifique #}
+
+{{ include('layouts/header.twig', {title:'Livres'}) }}
+
+<div>
+    <h1>Détails du Livre</h1>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <td>{{ livre.titre }}</td>
+        </tr>
+        <tr>
+            <th>Auteur</th>
+            <td>{{ livre.auteur }}</td>
+        </tr>
+        <tr>
+            <th>Catégorie</th>
+            <td>{{ livre.categorie }}</td>
+        </tr>
+    </table>
+</div>
+
+{{ include('layouts/footer.twig') }}

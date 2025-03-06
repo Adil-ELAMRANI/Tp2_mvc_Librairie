@@ -7,7 +7,7 @@ use App\Models\Livre;
 use App\Models\Categorie;
 use App\Providers\View;
 
-class LivreController {
+class ControllerLivre {
     
     public function index() {
         $livre = new Livre();
@@ -18,7 +18,7 @@ class LivreController {
         $selectCategorie = $categorie->select();
     
         // Affichage avec View
-        return View::render("livre/index", [
+        return View::render(template: "livre/livre-index", data:[
             'livres' => $selectLivre,
             'categories' => $selectCategorie
         ]);
