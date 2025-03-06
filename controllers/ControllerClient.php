@@ -23,7 +23,7 @@ class ControllerClient {
     public function create() {
         $ville = new Ville();
         $selectVille = $ville->select();
-        return View::render('client/create', ['villes' => $selectVille]);
+        return View::render('client/client-create', ['villes' => $selectVille]);
     }
 
     public function store($data=[]) {
@@ -45,7 +45,7 @@ class ControllerClient {
             }
         } else {
             $errors = $validator->getErrors();
-            return View::render('client/create', ['errors' => $errors, 'client' => $data]);
+            return View::render('client/client-create', ['errors' => $errors, 'client' => $data]);
         }
     }
 
@@ -58,7 +58,7 @@ class ControllerClient {
             $selectVille = $ville->select();
             
             if ($selectClient) {
-                return View::render('client-show', ['client' => $selectClient, 'villes' => $selectVille]);
+                return View::render('client/client-show', ['client' => $selectClient, 'villes' => $selectVille]);
             } else {
                 return View::render('error', ['msg' => 'Client doesn\'t exist']);
             }
@@ -75,7 +75,7 @@ class ControllerClient {
             $selectVille = $ville->select();
             
             if ($selectClient) {
-                return View::render('client/edit', ['client' => $selectClient, 'villes' => $selectVille]);
+                return View::render('client/client-edit', ['client' => $selectClient, 'villes' => $selectVille]);
             } else {
                 return View::render('error', ['msg' => 'Client doesn\'t exist']);
             }
@@ -96,13 +96,13 @@ class ControllerClient {
             $client = new Client();
             $update = $client->update($data, $get['id']);
             if ($update) {
-                return View::redirect('client/show?id=' . $get['id']);
+                return View::redirect('client/client-show?id=' . $get['id']);
             } else {
                 return View::render('error');
             }
         } else {
             $errors = $validator->getErrors();
-            return View::render('client/edit', ['errors' => $errors, 'client' => $data]);
+            return View::render('client/client-edit', ['errors' => $errors, 'client' => $data]);
         }
     }
 

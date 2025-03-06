@@ -8,8 +8,8 @@ Route::get('/', 'ControllerHome@index');
 // Routes pour les clients
 Route::get('/clients', 'ControllerClient@index');  // Liste des clients
 Route::get('/clients/show/{id}', 'ControllerClient@show');  // Afficher un client 
-Route::get('/client/create', 'ControllerClient@create');
-Route::post('/client', 'ControllerClient@store');  // Ajouter un client
+Route::get('/client/client-create', 'ControllerClient@create');
+Route::post('/client/create', 'ControllerClient@store');  // Ajouter un client
 Route::post('/clients/update/{id}', 'ControllerClient@update');  // Mettre à jour un client
 Route::post('/clients/delete/{id}', 'ControllerClient@delete');  // Supprimer un client
 

@@ -18,7 +18,7 @@ class ControllerLocation
     {
         $location = new Location();
         $selectLocation = $location->select();
-        return View::render('location/index', ['locations' => $selectLocation]);
+        return View::render('location/home-index', ['locations' => $selectLocation]);
     }
     // Affiche le formulaire de création d'une nouvelle location
     public function create()
