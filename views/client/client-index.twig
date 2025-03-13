@@ -1,36 +1,44 @@
-<!-- client-index.twig -->
-<!-- Affichage de la liste des clients avec leurs informations -->
- 
-{{ include('layouts/header.twig', {title:'client-index'})}}
-<div>
-    <h1>Liste des Clients</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>Code Postal</th>
-                <th>Phone</th>
-                <th>Ville</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for client in clients %}
-            <tr>
-                <td><a href="{{ path }}client/show/{{ client.id }}">{{ client.prenom }} {{ client.nom }}</a></td>
-                <td>{{ client.adresse }}</td>
-                <td>{{ client.code_postal }}</td>
-                <td>{{ client.phone }}</td>
-                <td>
-                    {% for ville in villes %}
+{{ include('layouts/header.twig', {title:'Liste des Clients'}) }}
+
+<h1>Liste des Clients</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Code Postal</th>
+            <th>Téléphone</th>
+            <th>Ville</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+        <tr>
+            <td><a href="{{ base }}/client/show/{{ client.id }}">{{ client.prenom }} {{ client.nom }}</a></td>
+            <td>{{ client.adresse }}</td>
+            <td>{{ client.code_postal }}</td>
+            <td>{{ client.phone }}</td>
+            <td>
+                {% for ville in villes %}
                     {% if client.ville_id == ville.id %}
-                    {{ ville.nom }}
+                        {{ ville.nom }}
                     {% endif %}
-                    {% endfor %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div> 
-{{ include('layouts/footer.twig')}}
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{{ base }}/client/edit?id={{ client.id }}">Modifier</a>
+                <form action="{{ base }}/client/delete" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="{{ client.id }}">
+                    <input type="submit" value="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ce client ?')">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<td><a href="{{ base }}/client/show?id={{ client.id }}">{{ client.prenom }} {{ client.nom }}</a></td>
+
+
+{{ include('layouts/footer.twig') }}

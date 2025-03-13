@@ -1,0 +1,46 @@
+{{ include('layouts/header.twig', {title:'Liste des Locations'}) }}
+
+<h1>Liste des Locations</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Livre</th>
+            <th>Date début</th>
+            <th>Date fin</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for location in locations %}
+        <tr>
+            <td>
+                {% for client in clients %}
+                    {% if location.client_id == client.id %}
+                        {{ client.prenom }} {{ client.nom }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {% for livre in livres %}
+                    {% if location.livre_id == livre.id %}
+                        {{ livre.titre }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ location.date_debut }}</td>
+            <td>{{ location.date_fin }}</td>
+            <td>
+                <form action="{{ base }}/location/delete" method="post">
+                    <input type="hidden" name="id" value="{{ location.id }}">
+                    <input type="submit" value="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer cette location ?')">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ base }}/location/create">Ajouter une Location</a>
+
+{{ include('layouts/footer.twig') }}

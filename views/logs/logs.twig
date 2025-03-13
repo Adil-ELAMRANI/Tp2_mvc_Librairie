@@ -1,0 +1,25 @@
+{{ include('layouts/header.twig', {title:'Journal de bord'}) }}
+<h1>Journal des connexions</h1>
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>IP</th>
+            <th>Action</th>
+            <th>Message</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.user_id }}</td>
+            <td>{{ log.ip_address }}</td>
+            <td>{{ log.action }}</td>
+            <td>{{ log.message }}</td>
+            <td>{{ log.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{{ include('layouts/footer.twig') }}

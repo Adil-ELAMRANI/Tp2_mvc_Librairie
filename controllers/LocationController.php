@@ -9,20 +9,21 @@ use App\Models\Livre;
 use App\Models\Location;
 use App\Providers\View;
 use App\Providers\Validator;
+use App\Providers\Auth;
 
-class ControllerLocation
+class LocationController
 {
 
     // Affiche la liste des locations
-    public function index()
-    {
+    public function index(){
+        Auth::session();
         $location = new Location();
         $selectLocation = $location->select();
         return View::render('location/home-index', ['locations' => $selectLocation]);
     }
     // Affiche le formulaire de création d'une nouvelle location
-    public function create()
-    {
+    public function create(){
+        Auth::session();
         $client = new Client();
         $livre = new Livre();
 
@@ -48,6 +49,7 @@ class ControllerLocation
     // Insère une nouvelle location en base de données
 
     public function store($data = []){
+        Auth::session();
         $validator = new Validator();
         $validator->field('client_id', $data['client_id'])->required();
         $validator->field('livre_id', $data['livre_id'])->required();
@@ -66,11 +68,30 @@ class ControllerLocation
         }
     }
 
-    // Supprime une location existante
-    public function delete($data = [])
-    {
+    /* Supprime une location existante
+    public function delete($data = []){
+        Auth::session();
         $location = new Location();
         $delete = $location->delete($data['id']);
         return View::redirect('locations');
+    }*/
+
+    public function delete($data = []) {
+        Auth::session();
+    
+        if (!isset($data['id']) || empty($data['id'])) {
+            return View::render('error', ['msg' => "ID de la location manquant."]);
+        }
+    
+        $location = new Location();
+    
+        $delete = $location->delete($data['id']);
+    
+        if ($delete) {
+            return View::redirect('/locations');
+        } else {
+            return View::render('error', ['msg' => "Erreur lors de la suppression de la location."]);
+        }
     }
+    
 }

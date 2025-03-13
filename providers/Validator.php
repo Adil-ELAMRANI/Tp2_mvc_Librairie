@@ -1,6 +1,6 @@
 <?php
 namespace App\Providers;
-
+use App\Models;
 class Validator{
 
     private $errors = array();
@@ -45,6 +45,23 @@ class Validator{
             $this->errors[$this->key]="$this->nom must be a number!";
         }
         return $this;	    
+    }
+
+    public function email(){
+        if(!empty($this->value) && !filter_var($this->value, FILTER_VALIDATE_EMAIL)){  
+            $this->errors[$this->key]="$this->nom invalid!";
+        }
+        return $this;	    
+    }
+
+    public function unique($model){
+        $model = 'App\\Models\\'.$model;
+        $model = new $model;
+        $unique = $model->unique($this->key, $this->value);
+        if($unique){
+            $this->errors[$this->key]="$this->nom must be unique!";
+        }
+        return $this;
     }
 
     public function isSuccess(){
